@@ -25,7 +25,14 @@ export class QrComponent {
       // this.url = ''
     }, 0);
   }
-  download() {}
+  download() {
+    let canvas = this.canvas.nativeElement;
+    let image = canvas.toDataURL("image/png", 1.0).replace("image/png", "image/octet-stream");
+    let link = document.createElement('a');
+    link.download = "qr-code.png";
+    link.href = image;
+    link.click();
+  }
   handleClear() {
     this.url = '';
     this.qrActive = false;

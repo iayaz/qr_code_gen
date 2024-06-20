@@ -19,6 +19,8 @@ export class QrComponent {
   generate() {
     if (this.url === '' || !this.urlRegex.test(this.url)) {
       this.isValid = false;
+      this.url = '';
+      window.alert('Enter a Valid URL');
       return;
     }
     this.qrActive = true;
@@ -28,7 +30,6 @@ export class QrComponent {
         if (error) console.error(error);
         console.log('success!');
       });
-      // this.url = ''
     }, 0);
   }
   download() {
